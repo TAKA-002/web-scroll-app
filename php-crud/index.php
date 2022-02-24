@@ -34,8 +34,8 @@ include './partials/header.php'
           <td><?php echo $item['scrollFlag'] ? 'true' : 'false'; ?></td>
           <td>
             <a href="./actions/view.php?id=<?php echo $item['id'] ?>" class="btn btn-sm btn-outline-info">View</a>
-            <a href="./actions/update.php?id=<?php echo $item['id'] ?>" class="btn btn-sm btn-outline-info">Update</a>
-            <a href="./actions/delete.php?id=<?php echo $item['id'] ?>" class="btn btn-sm btn-outline-info">Delete</a>
+            <a href="./actions/update.php?id=<?php echo $item['id'] ?>" class="btn btn-sm btn-outline-success">Update</a>
+            <a href="./actions/delete.php?id=<?php echo $item['id'] ?>" class="btn btn-sm btn-outline-danger">Delete</a>
           </td>
         </tr>
       <?php endforeach; ?>
