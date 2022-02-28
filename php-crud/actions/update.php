@@ -1,6 +1,6 @@
 <?php
 include __DIR__ . '/../partials/header.php';
-require(__DIR__ . '/../list/lists.php');
+require(__DIR__ . '/../methods/lists.php');
 
 if (!isset($_GET['id'])) {
   include __DIR__ . '/../partials/err/not_found_query.php';
@@ -15,10 +15,14 @@ if (!$webpage) {
   exit;
 }
 
-echo '<pre>';
-var_dump($_SERVER);
-echo '</pre>';
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  updateWebpageList($_POST, $webpageId);
 
+  /**
+   * headerメソッドでrefresh
+   */
+  header("Location: ../index.php");
+}
 
 ?>
 
@@ -45,8 +49,8 @@ echo '</pre>';
           <input name="url" value="<?php echo $webpage['url']; ?>" class="form-control">
         </div>
         <div class="form-group mb-3">
-          <label class="form-label">ScrollFlag</label>
-          <input name="scrollFlag" value="<?php echo $webpage['scrollFlag']; ?>" class="form-control">
+          <label class="form-label">ScrollFlag：true or false</label>
+          <input name="scrollFlag" value="<?php echo $webpage['scrollFlag'] ? "true" : "false"; ?>" class="form-control">
         </div>
 
         <button class="btn btn-success">Submit</button>

@@ -1,6 +1,8 @@
 <?php
+error_reporting(-1);
+ini_set('display_errors', 'On');
 
-require('./list/lists.php');
+require('./methods/lists.php');
 $webPageLists = getWebpageLists();
 
 
@@ -23,7 +25,7 @@ include './partials/header.php'
       <!-- 
         foreachで配列webPageListsの要素をitemごとに表示
         ボタンのhrefにはそれぞれパラメータとしてitemのidを付与し、各phpファイルへデータを送付
-       -->
+      -->
       <?php foreach ($webPageLists as $item) : ?>
         <tr>
           <td><?php echo $item['id'] ?></td>

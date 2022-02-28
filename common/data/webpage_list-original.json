@@ -3,17 +3,17 @@
     "id": 1,
     "companyName": "yahoo JAPAN",
     "url": "https://www.yahoo.co.jp/",
-    "scrollFlag": "TRUE"
+    "scrollFlag": true
   },
   {
     "id": 2,
-    "companyName": "\u30c8\u30e8\u30bf \u81ea\u52d5\u8eca",
+    "companyName": "トヨタ自動車",
     "url": "https://toyota.jp/",
     "scrollFlag": true
   },
   {
     "id": 3,
-    "companyName": "\u30ad\u30ea\u30f3\u30db\u30fc\u30eb\u30c7\u30a3\u30f3\u30b0\u30b9",
+    "companyName": "キリンホールディングス",
     "url": "https://www.kirin.co.jp/",
     "scrollFlag": true
   },
@@ -25,7 +25,7 @@
   },
   {
     "id": 5,
-    "companyName": "NHK\u9078\u6319WEB",
+    "companyName": "NHK選挙WEB",
     "url": "https://www.nhk.or.jp/senkyo/",
     "scrollFlag": true
   }

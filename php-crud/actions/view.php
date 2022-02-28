@@ -1,7 +1,7 @@
 <?php
 // 一階層上を指定する書き方
 include __DIR__ . '/../partials/header.php';
-require(__DIR__ . '/../list/lists.php');
+require(__DIR__ . '/../methods/lists.php');
 
 // $webpageId = $_GET;
 // getだけだと以下のvar_dumpになる
