@@ -3,7 +3,11 @@ error_reporting(-1);
 ini_set('display_errors', 'On');
 
 require('./methods/lists.php');
-$webPageLists = getWebpageLists();
+
+/**
+ * jsonデータを情報をすべてデコードして取得
+ */
+$web_page_all_data = getWebpageLists();
 
 
 // 共通ヘッダーとフッターは、別ファイルにしてincludeを使うことでSSR可能
@@ -27,10 +31,10 @@ include './partials/header.php'
     </thead>
     <tbody>
       <!-- 
-        foreachで配列webPageListsの要素をitemごとに表示
+        foreachで配列web_page_all_dataの要素をitemごとに表示
         ボタンのhrefにはそれぞれパラメータとしてitemのidを付与し、各phpファイルへデータを送付
       -->
-      <?php foreach ($webPageLists as $item) : ?>
+      <?php foreach ($web_page_all_data as $item) : ?>
         <tr>
           <td><?php echo $item['id'] ?></td>
           <td><?php echo $item['companyName'] ?></td>
