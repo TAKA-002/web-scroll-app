@@ -11,6 +11,10 @@ include './partials/header.php'
 ?>
 
 <div class="container">
+  <p>
+    <a href="./actions/create.php" class="btn btn-success">Create New Item</a>
+  </p>
+
   <table class="table">
     <thead>
       <tr>

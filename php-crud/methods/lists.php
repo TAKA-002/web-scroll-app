@@ -32,9 +32,14 @@ function getWebpageListsById($id)
   return null;
 }
 
-function createUser($data)
+function createItem($data)
 {
+  $webpagelists = getWebpageLists();
+  $webpagelists[] = $data;
+  putJson($webpagelists);
+  return $data;
 }
+
 
 
 /**
@@ -64,9 +69,17 @@ function updateWebpageList($data, $id)
     }
   }
 
-  file_put_contents(__DIR__ . '/../../common/data/webpage_list.json', json_encode($webpagelists));
+  putJson($webpagelists);
 }
 
 function deleteUser($id)
 {
+}
+
+function putJson($webpagelists)
+{
+  /**
+   * json_encodeの第２引数にこれを指定すると、jsonが整形されてエンコードされる
+   */
+  file_put_contents(__DIR__ . '/../../common/data/webpage_list.json', json_encode($webpagelists, JSON_PRETTY_PRINT));
 }

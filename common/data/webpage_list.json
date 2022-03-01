@@ -1,32 +1,50 @@
 [
-  {
-    "id": 1,
-    "companyName": "yahoo JAPAN",
-    "url": "https://www.yahoo.co.jp/",
-    "scrollFlag": "TRUE"
-  },
-  {
-    "id": 2,
-    "companyName": "\u30c8\u30e8\u30bf \u81ea\u52d5\u8eca",
-    "url": "https://toyota.jp/",
-    "scrollFlag": true
-  },
-  {
-    "id": 3,
-    "companyName": "\u30ad\u30ea\u30f3\u30db\u30fc\u30eb\u30c7\u30a3\u30f3\u30b0\u30b9",
-    "url": "https://www.kirin.co.jp/",
-    "scrollFlag": true
-  },
-  {
-    "id": 4,
-    "companyName": "NHK",
-    "url": "https://www3.nhk.or.jp/news/",
-    "scrollFlag": true
-  },
-  {
-    "id": 5,
-    "companyName": "NHK\u9078\u6319WEB",
-    "url": "https://www.nhk.or.jp/senkyo/",
-    "scrollFlag": true
-  }
+    {
+        "id": 1,
+        "companyName": "yahoo JP",
+        "url": "https:\/\/www.yahoo.co.jp\/",
+        "scrollFlag": true
+    },
+    {
+        "id": 2,
+        "companyName": "\u30c8\u30e8\u30bf \u81ea\u52d5\u8eca",
+        "url": "https:\/\/toyota.jp\/",
+        "scrollFlag": true
+    },
+    {
+        "id": 3,
+        "companyName": "\u30ad\u30ea\u30f3\u30db\u30fc\u30eb\u30c7\u30a3\u30f3\u30b0\u30b9",
+        "url": "https:\/\/www.kirin.co.jp\/",
+        "scrollFlag": true
+    },
+    {
+        "id": 4,
+        "companyName": "NHK",
+        "url": "https:\/\/www3.nhk.or.jp\/news\/",
+        "scrollFlag": true
+    },
+    {
+        "id": 5,
+        "companyName": "NHK\u9078\u6319WEB",
+        "url": "https:\/\/www.nhk.or.jp\/senkyo\/",
+        "scrollFlag": true
+    },
+    {
+        "id": "5",
+        "companyName": "aaaaaaaaaaa",
+        "url": ";lkj;lkfafa",
+        "scrollFlag": "false"
+    },
+    {
+        "id": "5",
+        "companyName": "aaaaaaaaaaa",
+        "url": ";lkj;lkfafa",
+        "scrollFlag": "false"
+    },
+    {
+        "id": "5",
+        "companyName": "aaaaaaaaaaa",
+        "url": ";lkj;lkfafa",
+        "scrollFlag": "false"
+    }
 ]
