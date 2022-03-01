@@ -7,9 +7,6 @@ class Conversion
       $data['id'] = (int)$data['id'];
     }
 
-    // if ($data['scrollFlag'] !== "true" || $data['scrollFlag'] !== "false") {
-    // }
-
     if ($data['scrollFlag'] === "true") {
       $data['scrollFlag'] = true;
     }

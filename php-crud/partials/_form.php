@@ -2,7 +2,7 @@
   <div class="card">
     <div class="card-header">
       <h3>
-        <?php if ($web_page_data['id']) : ?>
+        <?php if ($web_page_data['companyName']) : ?>
           Update Web Page：<b><?php echo $web_page_data['companyName'] ?></b>
 
         <?php else : ?>
@@ -16,15 +16,18 @@
       <form action="" method="POST" enctype="multipart/form-data">
 
         <div class="form-group mb-3">
-          <?php if ($web_page_data['id'] === null) : ?>
+
+          <!-- 新規（企業名がない場合）はID：自動入力 -->
+          <?php if ($web_page_data['companyName'] === '') : ?>
             <label class="form-label">ID：自動入力</label>
-            <input name="id" value="<?php echo $web_page_data['id'] = random_int(1000, 2000); ?>" class="form-control" readonly>
 
           <?php else : ?>
             <label class="form-label">ID</label>
-            <input name="id" value="<?php echo $web_page_data['id']; ?>" class="form-control" readonly>
 
           <?php endif ?>
+
+          <!-- idは作成段階で重複がないかチェックしている -->
+          <input name="id" value="<?php echo $web_page_data['id']; ?>" class="form-control" readonly>
         </div>
 
         <div class="form-group mb-3">
