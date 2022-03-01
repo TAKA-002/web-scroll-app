@@ -9,8 +9,6 @@ require('./methods/lists.php');
  */
 $web_page_all_data = getWebpageLists();
 
-
-// 共通ヘッダーとフッターは、別ファイルにしてincludeを使うことでSSR可能
 include './partials/header.php'
 ?>
 
