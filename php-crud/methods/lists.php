@@ -2,7 +2,7 @@
 require('conversion.php');
 
 /**
- * jsonファイルを取得後、連想配列をreturn。
+ * jsonファイルから全jsonデータ取得後、連想配列をreturn。
  * 
  * @return array{
  *  id: number,
@@ -23,8 +23,8 @@ function getWebpageLists()
  */
 function getWebpageListsById($id)
 {
-  $webpagelists = getWebpageLists();
-  foreach ($webpagelists as $item) {
+  $web_page_all_data = getWebpageLists();
+  foreach ($web_page_all_data as $item) {
     if ($item['id'] == $id) {
       return $item;
     }
@@ -34,9 +34,9 @@ function getWebpageListsById($id)
 
 function createItem($data)
 {
-  $webpagelists = getWebpageLists();
-  $webpagelists[] = $data;
-  putJson($webpagelists);
+  $web_page_all_data = getWebpageLists();
+  $web_page_all_data[] = $data;
+  putJson($web_page_all_data);
   return $data;
 }
 
@@ -56,30 +56,27 @@ function createItem($data)
  */
 function updateWebpageList($data, $id)
 {
-  $webpagelists = getWebpageLists();
+  $web_page_all_data = getWebpageLists();
   $conversion = new Conversion();
 
-  foreach ($webpagelists as $i => $item) {
+  foreach ($web_page_all_data as $i => $item) {
     if ($item['id'] == $id) {
       $convertedData = $conversion->convert_values($data);
-      echo '<pre>';
-      var_dump($convertedData);
-      echo '</pre>';
-      $webpagelists[$i] = array_merge($item, $convertedData);
+      $web_page_all_data[$i] = array_merge($item, $convertedData);
     }
   }
 
-  putJson($webpagelists);
+  putJson($web_page_all_data);
 }
 
 function deleteUser($id)
 {
 }
 
-function putJson($webpagelists)
+function putJson($web_page_all_data)
 {
   /**
-   * json_encodeの第２引数にこれを指定すると、jsonが整形されてエンコードされる
+   * json_encodeの第２引数に「JSON_PRETTY_PRINT」指定すると、jsonが整形されてエンコードされる
    */
-  file_put_contents(__DIR__ . '/../../common/data/webpage_list.json', json_encode($webpagelists, JSON_PRETTY_PRINT));
+  file_put_contents(__DIR__ . '/../../common/data/webpage_list.json', json_encode($web_page_all_data, JSON_PRETTY_PRINT));
 }
