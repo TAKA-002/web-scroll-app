@@ -43,7 +43,10 @@ include './partials/header.php'
           <td>
             <a href="./actions/view.php?id=<?php echo $item['id'] ?>" class="btn btn-sm btn-outline-info">View</a>
             <a href="./actions/update.php?id=<?php echo $item['id'] ?>" class="btn btn-sm btn-outline-success">Update</a>
-            <a href="./actions/delete.php?id=<?php echo $item['id'] ?>" class="btn btn-sm btn-outline-danger">Delete</a>
+            <form method="POST" action="actions/delete.php">
+              <input type="hidden" name="id" value="<?php echo $item['id'] ?>">
+              <button class="btn btn-sm btn-outline-danger">Delete</button>
+            </form>
           </td>
         </tr>
       <?php endforeach; ?>

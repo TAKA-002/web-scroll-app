@@ -70,10 +70,6 @@ function updateWebpageList($data, $id)
   putJson($web_page_all_data);
 }
 
-function deleteUser($id)
-{
-}
-
 function putJson($web_page_all_data)
 {
   /**
@@ -100,4 +96,20 @@ function createId($web_page_all_data)
   };
 
   return $random_number;
+}
+
+/**
+ * 
+ */
+function deleteWebpageList($id)
+{
+  $web_page_all_data = getWebpageLists();
+
+  foreach ($web_page_all_data as $i => $item) {
+    if ($item['id'] == $id) {
+      array_splice($web_page_all_data, $i, 1);
+    }
+  }
+
+  putJson($web_page_all_data);
 }
