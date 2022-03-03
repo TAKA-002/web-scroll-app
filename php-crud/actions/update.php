@@ -1,6 +1,7 @@
 <?php
 include __DIR__ . '/../partials/header.php';
 require(__DIR__ . '/../methods/lists.php');
+require(__DIR__ . '/../methods/validation.php');
 
 if (!isset($_GET['id'])) {
   include __DIR__ . '/../partials/err/not_found_query.php';
@@ -26,6 +27,14 @@ if (!$web_page_data) {
  * headerメソッドでrefresh
  */
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+  $validation = new Validation();
+  $checkedResult = $validation->checkEmptyData($_POST);
+  if (!$checkedResult) {
+    include __DIR__ . '/../partials/err/not_found_data.php';
+    exit;
+  }
+
   updateWebpageList($_POST, $web_page_id);
 
   header("Location: ../index.php");
