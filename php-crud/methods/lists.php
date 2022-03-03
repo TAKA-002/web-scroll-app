@@ -4,6 +4,8 @@ require('conversion.php');
 /**
  * jsonファイルから全jsonデータ取得後、連想配列をreturn。
  * 
+ * @param
+ * 
  * @return array{
  *  id: number,
  *  companyName: string,
@@ -39,7 +41,6 @@ function createItem($data)
   putJson($web_page_all_data);
   return $data;
 }
-
 
 
 /**

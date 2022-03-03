@@ -7,6 +7,7 @@ if (!isset($_GET['id'])) {
   include __DIR__ . '/../partials/err/not_found_query.php';
   exit;
 }
+
 /**
  * index.phpのupdateボタンを押したとき、hrefのクエリにidがついている。それを$_GETで取得して$webpageIdにセット。
  */
@@ -29,8 +30,22 @@ if (!$web_page_data) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   $validation = new Validation();
-  $checkedResult = $validation->checkEmptyData($_POST);
-  if (!$checkedResult) {
+
+  /**
+   * postデータが空ではないかチェックする。
+   */
+  $empty_check_result = $validation->checkEmptyData($_POST);
+  if (!$empty_check_result) {
+    include __DIR__ . '/../partials/err/not_found_data.php';
+    exit;
+  }
+
+  /**
+   * postデータのurlが重複していないかチェックする。
+   */
+  $web_page_all_data = getWebpageLists();
+  $duplicate_check_result = $validation->checkDuplicateURLforUpdate($_POST, $web_page_all_data);
+  if (!$duplicate_check_result) {
     include __DIR__ . '/../partials/err/not_found_data.php';
     exit;
   }
