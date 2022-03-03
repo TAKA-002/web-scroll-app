@@ -80,3 +80,23 @@ function putJson($web_page_all_data)
    */
   file_put_contents(__DIR__ . '/../../common/data/webpage_list.json', json_encode($web_page_all_data, JSON_PRETTY_PRINT));
 }
+
+/**
+ * 新規IDの作成
+ */
+function createId($web_page_all_data)
+{
+  $random_number = random_int(1000, 2000);
+
+  // 重複チェック
+  foreach ($web_page_all_data as $item) {
+    if ($item['id'] !== $random_number) {
+      continue;
+    };
+    if ($item['id'] === $random_number) {
+      return createId($web_page_all_data);
+    }
+  };
+
+  return $random_number;
+}
