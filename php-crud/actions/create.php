@@ -32,6 +32,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit;
   }
 
+  /**
+   * postデータのurlが重複していないかチェックする。
+   */
+  $web_page_all_data = getWebpageLists();
+  $duplicate_check_result = $validation->checkDuplicateURLforCreate($_POST, $web_page_all_data);
+  if (!$duplicate_check_result) {
+    include __DIR__ . '/../partials/err/not_found_data.php';
+    exit;
+  }
+
   createItem($_POST);
 
   header('Location: ../index.php');

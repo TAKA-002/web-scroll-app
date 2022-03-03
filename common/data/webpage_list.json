@@ -30,27 +30,9 @@
         "scrollFlag": true
     },
     {
-        "id": 1866,
-        "companyName": "aaaaaa",
-        "url": "aaaaaaa",
-        "scrollFlag": false
-    },
-    {
-        "id": "1058",
-        "companyName": "",
-        "url": "",
-        "scrollFlag": "true"
-    },
-    {
-        "id": "1821",
+        "id": 1821,
         "companyName": "Youtube",
         "url": "https:\/\/www.youtube.com\/",
-        "scrollFlag": "true"
-    },
-    {
-        "id": "1211",
-        "companyName": "Youtube",
-        "url": "https:\/\/www.youtube.com\/",
-        "scrollFlag": "true"
+        "scrollFlag": true
     }
 ]
