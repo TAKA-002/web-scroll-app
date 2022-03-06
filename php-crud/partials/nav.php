@@ -1,4 +1,3 @@
-<!-- Image and text -->
 <nav class="navbar navbar-light shadow mb-5 bg-light rounded">
   <div class="container">
     <a class="navbar-brand" href="/web-scroll-app/php-crud/">
@@ -16,7 +15,6 @@
           </g>
         </g>
       </svg>
-      <!-- <img src="/docs/4.3/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt=""> -->
       WEB SCROLL APP - create for Bootstrap
     </a>
   </div>
