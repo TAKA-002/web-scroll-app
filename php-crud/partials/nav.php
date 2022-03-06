@@ -1,4 +1,4 @@
-<nav class="navbar navbar-light shadow mb-5 bg-light rounded">
+<nav class="navbar navbar-dark shadow bg-dark rounded">
   <div class="container">
     <a class="navbar-brand" href="/web-scroll-app/php-crud/">
       <svg version='1.1' width="73" height="20" xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 145.6 40.9' style='enable-background:new 0 0 145.6 40.9;' xml:space='preserve'>

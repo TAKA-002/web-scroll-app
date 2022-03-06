@@ -52,6 +52,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <?php include __DIR__ . '/../partials/nav.php' ?>
 
-<?php include __DIR__ . '/../partials/_form.php' ?>
+<div class="row m-0">
+  <!-- sidebar -->
+  <?php include __DIR__ . '/../partials/sidebar.php' ?>
+
+  <?php include __DIR__ . '/../partials/_form.php' ?>
+</div>
 
 <?php include __DIR__ . '/../partials/footer.php' ?>

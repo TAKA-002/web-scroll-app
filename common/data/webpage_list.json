@@ -1,7 +1,7 @@
 [
     {
         "id": 3,
-        "companyName": "\u30ad\u30ea\u30f3\u30db\u30fc\u30eb\u30c7\u30a3\u30f3\u30b0\u30b9",
+        "companyName": "\u30ad\u30ea\u30f3",
         "url": "https:\/\/www.kirin.co.jp\/",
         "scrollFlag": true
     },
@@ -16,5 +16,11 @@
         "companyName": "NHK\u9078\u6319WEB",
         "url": "https:\/\/www.nhk.or.jp\/senkyo\/",
         "scrollFlag": true
+    },
+    {
+        "id": "1101",
+        "companyName": "yahoo",
+        "url": "https:\/\/www.yahoo.co.jp\/",
+        "scrollFlag": "true"
     }
 ]

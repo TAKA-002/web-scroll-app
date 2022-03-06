@@ -23,46 +23,51 @@ if (!$web_page_data) {
 
 <?php include __DIR__ . '/../partials/nav.php' ?>
 
-<div class="container">
-  <div class="card">
-    <div class="card-header">
-      <h3>View Web Page Infomation ：<b><?php echo $web_page_data['companyName']; ?></b></h3>
+<div class="row m-0">
+  <!-- sidebar -->
+  <?php include __DIR__ . '/../partials/sidebar.php' ?>
+
+  <div class="container col main">
+    <div class="card">
+      <div class="card-header">
+        <h3>View Web Page Infomation ：<b><?php echo $web_page_data['companyName']; ?></b></h3>
+      </div>
+
+      <div class="card-body btn__wrap">
+        <a class="btn btn-secondary" href="update.php?id=<?php echo $web_page_data['id'] ?>">Update</a>
+
+        <form method="POST" action="delete.php">
+          <input type="hidden" name="id" value="<?php echo $web_page_data['id'] ?>">
+          <button class="btn btn-danger">Delete</button>
+        </form>
+      </div>
+
+      <table class="table">
+
+        <tbody>
+          <tr>
+            <th>ID</th>
+            <td><?php echo $web_page_data['id'] ?></td>
+          </tr>
+          <tr>
+            <th>CompanyName</th>
+            <td><?php echo $web_page_data['companyName'] ?></td>
+          </tr>
+          <tr>
+            <th>URL</th>
+            <td>
+              <a href="<?php echo $web_page_data['url'] ?>" target="_blank"><?php echo $web_page_data['url'] ?></a>
+            </td>
+          </tr>
+          <tr>
+            <th>ScrollFlag</th>
+            <td><?php echo $web_page_data['scrollFlag'] ? 'true' : 'false' ?></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
-    <div class="card-body btn__wrap">
-      <a class="btn btn-secondary" href="update.php?id=<?php echo $web_page_data['id'] ?>">Update</a>
-
-      <form method="POST" action="delete.php">
-        <input type="hidden" name="id" value="<?php echo $web_page_data['id'] ?>">
-        <button class="btn btn-danger">Delete</button>
-      </form>
-    </div>
-
-    <table class="table">
-
-      <tbody>
-        <tr>
-          <th>ID</th>
-          <td><?php echo $web_page_data['id'] ?></td>
-        </tr>
-        <tr>
-          <th>CompanyName</th>
-          <td><?php echo $web_page_data['companyName'] ?></td>
-        </tr>
-        <tr>
-          <th>URL</th>
-          <td>
-            <a href="<?php echo $web_page_data['url'] ?>" target="_blank"><?php echo $web_page_data['url'] ?></a>
-          </td>
-        </tr>
-        <tr>
-          <th>ScrollFlag</th>
-          <td><?php echo $web_page_data['scrollFlag'] ? 'true' : 'false' ?></td>
-        </tr>
-      </tbody>
-    </table>
   </div>
-
 </div>
 
 

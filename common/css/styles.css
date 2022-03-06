@@ -10,3 +10,13 @@
 svg {
   vertical-align: text-top;
 }
+
+/* sidebar */
+.sidebar {
+  height: calc(100vh - 56px);
+}
+
+/* main */
+.main {
+  padding: 32px 16px 0 16px;
+}
