@@ -1,0 +1,14 @@
+[
+  {
+    "site-name": "nhknews",
+    "url": "https://www3.nhk.or.jp/news/",
+    "csslink": "https://www3.nhk.or.jp/news/parts16/css/style-v3.css?stamp=ph555-2",
+    "jslink": "https://www3.nhk.or.jp/news/parts16/js/app.bundle-v3.js?stamp=ph555-2"
+  },
+  {
+    "site-name": "nhksenkyo",
+    "url": "https://www.nhk.or.jp/senkyo/",
+    "csslink": "https://www.nhk.or.jp/senkyo/parts/css/style.css",
+    "jslink": "https://www.nhk.or.jp/senkyo-data/top/js/index.bundle.js"
+  }
+]
