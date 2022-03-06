@@ -41,6 +41,16 @@
         </div>
 
         <div class="form-group mb-3">
+          <label class="form-label">CSS</label>
+          <input name="css" value="<?php echo $web_page_data['css']; ?>" class="form-control">
+        </div>
+
+        <div class="form-group mb-3">
+          <label class="form-label">JS</label>
+          <input name="js" value="<?php echo $web_page_data['js']; ?>" class="form-control">
+        </div>
+
+        <div class="form-group mb-3">
           <label class="form-label">ScrollFlag：true or false</label>
           <input name="scrollFlag" value="<?php echo $web_page_data['scrollFlag'] ? "true" : "false"; ?>" class="form-control">
         </div>

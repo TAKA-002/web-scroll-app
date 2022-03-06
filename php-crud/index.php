@@ -29,7 +29,7 @@ include './partials/header.php'
         <tr>
           <th>ID</th>
           <th>CompanyName</th>
-          <th>URL</th>
+          <th>URL / CSS / JS</th>
           <th>ScrollFlag</th>
           <th>Actions</th>
         </tr>
@@ -44,7 +44,17 @@ include './partials/header.php'
             <td><?php echo $item['id'] ?></td>
             <td><?php echo $item['companyName'] ?></td>
             <td>
-              <a href="<?php echo $item['url'] ?>" target="_blank"><?php echo $item['url'] ?></a>
+              <ul>
+                <li>
+                  <a href="<?php echo $item['url'] ?>" target="_blank"><?php echo $item['url'] ?></a>
+                </li>
+                <li>
+                  <a href="<?php echo $item['css'] ?>" target="_blank"><?php echo $item['css'] ?></a>
+                </li>
+                <li>
+                  <a href="<?php echo $item['js'] ?>" target="_blank"><?php echo $item['js'] ?></a>
+                </li>
+              </ul>
             </td>
             <td><?php echo $item['scrollFlag'] ? 'true' : 'false'; ?></td>
             <td class="btn__wrap">

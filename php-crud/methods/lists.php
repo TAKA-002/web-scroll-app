@@ -10,6 +10,8 @@ require('conversion.php');
  *  id: number,
  *  companyName: string,
  *  url: string,
+ *  css: string,
+ *  js: string,
  *  scrollFlag: bool
  * }
  * 
@@ -37,9 +39,13 @@ function getWebpageListsById($id)
 function createItem($data)
 {
   $web_page_all_data = getWebpageLists();
-  $web_page_all_data[] = $data;
+
+  $conversion = new Conversion();
+  $convertedData = $conversion->convert_values($data);
+
+  $web_page_all_data[] = $convertedData;
   putJson($web_page_all_data);
-  return $data;
+  return $convertedData;
 }
 
 

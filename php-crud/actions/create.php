@@ -18,6 +18,8 @@ $web_page_data = [
   'id' => $rand_id,
   'companyName' => '',
   'url' => '',
+  'css' => '',
+  'js' => '',
   'scrollFlag' => null,
 ];
 
