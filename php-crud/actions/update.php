@@ -57,6 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 ?>
 
+<?php include __DIR__ . '/../partials/nav.php' ?>
 
 <?php include __DIR__ . '/../partials/_form.php' ?>
 

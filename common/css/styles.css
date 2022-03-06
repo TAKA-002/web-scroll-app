@@ -1,0 +1,12 @@
+/* btn */
+.btn__wrap {
+  display: flex;
+}
+.btn__wrap a {
+  margin-right: 5px;
+}
+
+/* nav */
+svg {
+  vertical-align: text-top;
+}

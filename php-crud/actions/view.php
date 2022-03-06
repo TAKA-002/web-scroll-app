@@ -21,6 +21,8 @@ if (!$web_page_data) {
 
 ?>
 
+<?php include __DIR__ . '/../partials/nav.php' ?>
+
 <div class="container">
   <div class="card">
     <div class="card-header">
