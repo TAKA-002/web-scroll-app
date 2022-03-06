@@ -1,6 +1,9 @@
 <?php
 
-class CreateFile
+/**
+ * ファイル作成、ファイル名変更など、ファイルに関するクラス
+ */
+class File
 {
 
   // ファイルを新規作成し、保存
@@ -34,6 +37,5 @@ class CreateFile
 
   private function make_target_dir()
   {
-    
   }
 }
