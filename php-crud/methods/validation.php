@@ -73,6 +73,8 @@ class Validation
    * ["id"] => string
    * ["companyName"] => string
    * ["url"] => string
+   * ['css'] => string
+   * ['js'] => string
    * ["scrollFlag"] => string
    * }
    * 

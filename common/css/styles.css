@@ -1,8 +1,20 @@
 /* btn */
 .btn__wrap {
   display: flex;
+  flex-direction: column;
 }
 .btn__wrap a {
+  margin-bottom: 5px;
+}
+.btn__wrap button {
+  width: 100%;
+}
+
+/* viewのボタン */
+.btn__wrap-view {
+  display: flex;
+}
+.btn__wrap-view a {
   margin-right: 5px;
 }
 

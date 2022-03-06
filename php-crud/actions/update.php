@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
    * postデータが空ではないかチェックする。
    */
   $empty_check_result = $validation->checkEmptyData($_POST);
-  if (!$empty_check_result) {
+  if ($empty_check_result === false) {
     include __DIR__ . '/../partials/err/not_found_data.php';
     exit;
   }
@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
    */
   $web_page_all_data = getWebpageLists();
   $duplicate_check_result = $validation->checkDuplicateURLforUpdate($_POST, $web_page_all_data);
-  if (!$duplicate_check_result) {
+  if ($duplicate_check_result === false) {
     include __DIR__ . '/../partials/err/not_found_data.php';
     exit;
   }
