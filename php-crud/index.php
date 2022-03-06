@@ -12,6 +12,8 @@ $web_page_all_data = getWebpageLists();
 include './partials/header.php'
 ?>
 
+<?php include './partials/nav.php' ?>
+
 <div class="container">
   <p>
     <a href="./actions/create.php" class="btn btn-success">Create New Item</a>
@@ -40,7 +42,7 @@ include './partials/header.php'
             <a href="<?php echo $item['url'] ?>" target="_blank"><?php echo $item['url'] ?></a>
           </td>
           <td><?php echo $item['scrollFlag'] ? 'true' : 'false'; ?></td>
-          <td>
+          <td class="btn__wrap">
             <a href="./actions/view.php?id=<?php echo $item['id'] ?>" class="btn btn-sm btn-outline-info">View</a>
             <a href="./actions/update.php?id=<?php echo $item['id'] ?>" class="btn btn-sm btn-outline-success">Update</a>
             <form method="POST" action="actions/delete.php">

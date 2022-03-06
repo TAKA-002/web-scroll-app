@@ -27,7 +27,8 @@ $web_page_data = [
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $validation = new Validation();
   $checkedResult = $validation->checkEmptyData($_POST);
-  if (!$checkedResult) {
+
+  if ($checkedResult === false) {
     include __DIR__ . '/../partials/err/not_found_data.php';
     exit;
   }
@@ -37,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
    */
   $web_page_all_data = getWebpageLists();
   $duplicate_check_result = $validation->checkDuplicateURLforCreate($_POST, $web_page_all_data);
-  if (!$duplicate_check_result) {
+  if ($duplicate_check_result === false) {
     include __DIR__ . '/../partials/err/not_found_data.php';
     exit;
   }
@@ -48,6 +49,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 ?>
+
+<?php include __DIR__ . '/../partials/nav.php' ?>
 
 <?php include __DIR__ . '/../partials/_form.php' ?>
 

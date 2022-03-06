@@ -27,7 +27,7 @@ if (!$web_page_data) {
       <h3>View Web Page Infomation ：<b><?php echo $web_page_data['companyName']; ?></b></h3>
     </div>
 
-    <div class="card-body">
+    <div class="card-body btn__wrap">
       <a class="btn btn-secondary" href="update.php?id=<?php echo $web_page_data['id'] ?>">Update</a>
 
       <form method="POST" action="delete.php">
