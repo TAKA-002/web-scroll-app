@@ -28,9 +28,10 @@ include './partials/header.php'
       <thead>
         <tr>
           <th>ID</th>
-          <th>CompanyName</th>
+          <th>Site</th>
           <th>URL / CSS / JS</th>
-          <th>ScrollFlag</th>
+          <th>DirName</th>
+          <th>Flag</th>
           <th>Actions</th>
         </tr>
       </thead>
@@ -56,6 +57,7 @@ include './partials/header.php'
                 </li>
               </ul>
             </td>
+            <td><?php echo $item['dirName'] ?></td>
             <td><?php echo $item['scrollFlag'] ? 'true' : 'false'; ?></td>
             <td class="btn__wrap">
               <a href="./actions/view.php?id=<?php echo $item['id'] ?>" class="btn btn-sm btn-outline-info">View</a>
