@@ -70,6 +70,10 @@ if (!$web_page_data) {
             </td>
           </tr>
           <tr>
+            <th>DirName</th>
+            <td><?php echo $web_page_data['dirName'] ?></td>
+          </tr>
+          <tr>
             <th>ScrollFlag</th>
             <td><?php echo $web_page_data['scrollFlag'] ? 'true' : 'false' ?></td>
           </tr>
