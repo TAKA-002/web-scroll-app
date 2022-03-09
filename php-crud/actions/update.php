@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $validation = new Validation();
 
   /**
-   * postデータが空ではないかチェックする。
+   * postデータが空ではないかチェック。
    */
   $empty_check_result = $validation->checkEmptyData($_POST);
   if ($empty_check_result === false) {
@@ -41,12 +41,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   }
 
   /**
-   * postデータのurlが重複していないかチェックする。
+   * postデータのurlが重複していないかチェック。
    */
   $web_page_all_data = getWebpageLists();
   $duplicate_check_result = $validation->checkDuplicateURLforUpdate($_POST, $web_page_all_data);
   if ($duplicate_check_result === false) {
     include __DIR__ . '/../partials/err/not_found_data.php';
+    exit;
+  }
+
+  /**
+   * postデータのdirNameがすべて半角英数字かチェック。
+   */
+  $str_check_result = $validation->checkStrings($_POST['dirName']);
+  if ($str_check_result === false) {
+    include __DIR__ . '/../partials/err/invalid_dirName.php';
     exit;
   }
 

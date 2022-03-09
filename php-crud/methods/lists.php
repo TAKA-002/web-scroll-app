@@ -9,6 +9,7 @@ require('conversion.php');
  * @return array{
  *  id: number,
  *  companyName: string,
+ *  dirName: string,
  *  url: string,
  *  css: string,
  *  js: string,
@@ -23,7 +24,7 @@ function getWebpageLists()
 
 
 /**
- * 
+ * jsonのIDから該当のデータを取得する
  */
 function getWebpageListsById($id)
 {
@@ -36,6 +37,11 @@ function getWebpageListsById($id)
   return null;
 }
 
+/**
+ * POSTデータを値を変換してJSONに追加する
+ * 
+ * @param $data array
+ */
 function createItem($data)
 {
   $web_page_all_data = getWebpageLists();
@@ -105,7 +111,7 @@ function createId($web_page_all_data)
 }
 
 /**
- * 
+ * 削除ボタンを押した該当データをJSONから削除
  */
 function deleteWebpageList($id)
 {

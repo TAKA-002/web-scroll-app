@@ -17,6 +17,7 @@ $rand_id = createId($web_page_all_data);
 $web_page_data = [
   'id' => $rand_id,
   'companyName' => '',
+  'dirName' => '',
   'url' => '',
   'css' => '',
   'js' => '',
@@ -44,6 +45,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     include __DIR__ . '/../partials/err/not_found_data.php';
     exit;
   }
+
+  /**
+   * postデータのdirNameがすべて半角英数字かチェック。
+   */
+  $str_check_result = $validation->checkStrings($_POST['dirName']);
+  if ($str_check_result === false) {
+    include __DIR__ . '/../partials/err/invalid_dirName.php';
+    exit;
+  }
+
 
   createItem($_POST);
 

@@ -6,10 +6,13 @@ class Validation
   /**
    * POSTデータがすべて揃っていることをチェックする
    * 
-   * @param array {
+   * @param $data array {
    * ["id"] => string
    * ["companyName"] => string
+   * ["dirName"] => string
    * ["url"] => string
+   * ["css"] => string
+   * ["js"] => string
    * ["scrollFlag"] => string
    * }
    */
@@ -32,7 +35,7 @@ class Validation
   /**
    * POSTデータのurlがすでに全体のjsonデータに存在するか
    * 
-   * @param $target array{
+   * @param $data array{
    * ["id"] => string
    * ["companyName"] => string
    * ["url"] => string
@@ -40,19 +43,18 @@ class Validation
    * }
    * 
    */
-  public function checkDuplicateURLforUpdate($target, $web_page_all_data)
+  public function checkDuplicateURLforUpdate($data, $web_page_all_data)
   {
-
     foreach ($web_page_all_data as $item) {
 
       // urlが異なっていたら次のitem
-      if ($item['url'] != $target['url']) {
+      if ($item['url'] != $data['url']) {
         continue;
       };
 
       // urlが同じならidもチェックし、同じなら編集中としてOK
-      if ($item['url'] == $target['url']) {
-        if ($item['id'] == $target['id']) {
+      if ($item['url'] == $data['url']) {
+        if ($item['id'] == $data['id']) {
           return true;
         }
         // それ意外はNG
@@ -69,9 +71,10 @@ class Validation
   /**
    * POSTデータのurlがすでに全体のjsonデータに存在するか
    * 
-   * @param $target array{
+   * @param $data array{
    * ["id"] => string
    * ["companyName"] => string
+   * ["dirName"] => string
    * ["url"] => string
    * ['css'] => string
    * ['js'] => string
@@ -79,22 +82,35 @@ class Validation
    * }
    * 
    */
-  public function checkDuplicateURLforCreate($target, $web_page_all_data)
+  public function checkDuplicateURLforCreate($data, $web_page_all_data)
   {
-
     foreach ($web_page_all_data as $item) {
 
       // urlが異なっていたら次のitem
-      if ($item['url'] != $target['url']) {
+      if ($item['url'] != $data['url']) {
         continue;
       };
 
       // urlが同じならNG
-      if ($item['url'] == $target['url']) {
+      if ($item['url'] == $data['url']) {
         return false;
       }
 
       return true;
+    }
+  }
+
+  /**
+   * postのdirNameデータが半角英数字になっているかチェック
+   * 
+   * @param $data Strings
+   */
+  public function checkStrings($data)
+  {
+    if (preg_match("/^[a-zA-Z0-9]+$/", $data)) {
+      return true;
+    } else {
+      return false;
     }
   }
 }

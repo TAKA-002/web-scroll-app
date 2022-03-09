@@ -31,27 +31,32 @@
         </div>
 
         <div class="form-group mb-3">
-          <label class="form-label">CompanyName</label>
+          <label class="form-label">SiteName</label>
           <input name="companyName" value="<?php echo $web_page_data['companyName']; ?>" class="form-control">
         </div>
 
         <div class="form-group mb-3">
-          <label class="form-label">URL</label>
+          <label class="form-label">PAGE URL</label>
           <input name="url" value="<?php echo $web_page_data['url']; ?>" class="form-control">
         </div>
 
         <div class="form-group mb-3">
-          <label class="form-label">CSS</label>
+          <label class="form-label">CSS URL</label>
           <input name="css" value="<?php echo $web_page_data['css']; ?>" class="form-control">
         </div>
 
         <div class="form-group mb-3">
-          <label class="form-label">JS</label>
+          <label class="form-label">JS URL</label>
           <input name="js" value="<?php echo $web_page_data['js']; ?>" class="form-control">
         </div>
 
         <div class="form-group mb-3">
-          <label class="form-label">ScrollFlag：true or false</label>
+          <label class="form-label">DirName：すべて半角英数字（データ格納フォルダ名）</label>
+          <input name="dirName" value="<?php echo $web_page_data['dirName'] ?>" class="form-control">
+        </div>
+
+        <div class="form-group mb-3">
+          <label class="form-label">ScrollFlag：true or false（trueはスクロール実施。falseはスクロール不要）</label>
           <input name="scrollFlag" value="<?php echo $web_page_data['scrollFlag'] ? "true" : "false"; ?>" class="form-control">
         </div>
 
