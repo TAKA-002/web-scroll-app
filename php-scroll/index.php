@@ -1,25 +1,29 @@
 <?php
 date_default_timezone_set('Asia/Tokyo');
 
-require_once('./validation/listValidation.php');
+// require_once('./validation/existValidation.php');
+// require_once('./operation/scrollFile.php');
+require_once(dirname(__FILE__) . '/validation/existValidation.php');
+require_once(dirname(__FILE__) . '/operation/scrollFile.php');
 
 
 class ScrollWebPageSystem
 {
-  const SCROLL_LIST_FILE_PATH = '../common/data/webpage_list.json';
-  const ERR_STATUS_FLAG = 1;
-  const ERR_STATUS_NO_PAGE = 2;
-  const ERR_STATUS_NO_CSS = 3;
-  const ERR_STATUS_NO_JS = 4;
+  private const SCROLL_LIST_FILE_PATH = __DIR__ . '/../common/data/webpage_list.json';
+
+  private const ERR_STATUS_FLAG = 1;
+  private const ERR_STATUS_NO_PAGE = 2;
+  private const ERR_STATUS_NO_CSS = 3;
+  private const ERR_STATUS_NO_JS = 4;
+  private const NO_ERR = null;
+  private const NO_EXTENTION = null;
+  private const NO_DATA = null;
 
 
   public function main()
   {
-
-    // scrollを実行
     $this->scroll();
   }
-
 
 
   // ================================
@@ -29,124 +33,80 @@ class ScrollWebPageSystem
   private function scroll()
   {
 
-    // jsonファイルから配列のjsonデータを取得
-    $scroll_list_data = $this->get_json_list(self::SCROLL_LIST_FILE_PATH);
+    $exist_validation = new ExistValidation();
+    $scroll_file = new ScrollFile();
+    $scroll_list_data = $this->getJsonList(self::SCROLL_LIST_FILE_PATH);
 
     foreach ($scroll_list_data as $i => $item) {
 
-      $exist_validation = new ExistsValidation();
-
-      // ============================================
-      // jsonのscrollFlagを確認する
-      // ============================================
+      // scrollFlag確認：false => false判定されたことをテキストファイルに出力
       if ($item['scrollFlag'] === false) {
-        // falseの場合は、scrollflagがfalse判定されたことをテキストファイルに出力予定
-        // scrollFlagがfalseだということをファイル名でわかるように。
-        $this->create_err_file($item['dirName'], self::ERR_STATUS_FLAG);
-        exit;
-        // falseは処理を行わないためcontinueで以下の処理をすべてスキップ
+        $scroll_file->createFile($item['id'], $item['dirName'], self::ERR_STATUS_FLAG, self::NO_EXTENTION, self::NO_DATA);
+
+        // scrollFlag => false：以降処理を行わないため、continue
         continue;
       }
 
-      // ============================================
-      // scrollがtrueの場合は、jsonのurlからページが存在しているか確認
-      // ============================================
-      $page_exist_result = $exist_validation->url_exists($item['url']);
 
-      // ページが存在していなかった時の処理
+      // scrollFlag確認：true => urlページの存在確認
+      $page_exist_result = $exist_validation->urlExists($item['url']);
+
+      // ページ存在しない
       if ($page_exist_result === false) {
-        // 存在していなかったことを明確にするためにテキストファイルを出力予定
-        // htmlページがないエラーだということをファイル名でわかるように。
-        $this->create_err_file($item['dirName'], self::ERR_STATUS_NO_PAGE);
+        // テキストファイルを出力
+        $scroll_file->createFile($item['id'], $item['dirName'], self::ERR_STATUS_NO_PAGE, self::NO_EXTENTION, self::NO_DATA);
 
-        // falseは処理を行わないためcontinueで以下の処理をすべてスキップ
-
+        // ページなし => 以降の処理は不要、continue
         continue;
       }
 
 
-      // ============================================
-      // ページが存在していたらjsonに記載のCSSとJSを取得
-      // ============================================
-      $css_exist_result = $exist_validation->url_exists($item["css"]);
-      $js_exist_result = $exist_validation->url_exists($item["js"]);
+      // ページ存在あり => CSSとJSの存在確認
+      $css_exist_result = $exist_validation->urlExists($item["css"]);
+      $js_exist_result = $exist_validation->urlExists($item["js"]);
 
       if ($css_exist_result === false) {
-        // 存在していなかったことを明確にするためにテキストファイルを出力予定
-        // cssページがないエラーだということをファイル名でわかるように。
-        $this->create_err_file($item['dirName'], self::ERR_STATUS_NO_CSS);
-
-        // continueはいらない。
-
-
-      } else {
+        // CSSなし => テキストファイル出力（continueはしない）
+        $scroll_file->createFile($item['id'], $item['dirName'], self::ERR_STATUS_NO_CSS, self::NO_EXTENTION, self::NO_DATA);
+      }
+      // CSSあり => ファイルの内容を取得後、ファイル生成
+      else {
+        $extension = "css";
         $css_data = file_get_contents($item["css"]);
-        var_dump($css_exist_result);
+
+        $scroll_file->createFile($item['id'], $item['dirName'], self::NO_ERR, $extension, $css_data);
       }
 
+      // JSなし
       if ($js_exist_result === false) {
-        // 存在していなかったことを明確にするためにテキストファイルを出力予定
-        // jsページがないエラーだということをファイル名でわかるように。
-        $this->create_err_file($item['dirName'], self::ERR_STATUS_NO_JS);
+        $scroll_file->createFile($item['id'], $item['dirName'], self::ERR_STATUS_NO_JS, self::NO_EXTENTION, self::NO_DATA);
+      }
+      // JSあり
+      else {
+        $extension = "js";
+        $js_data = file_get_contents($item["js"]);
 
-        // continueはいらない。
-
-
-      } else {
-        $css_data = file_get_contents($item["js"]);
-        var_dump($js_exist_result);
+        $scroll_file->createFile($item['id'], $item['dirName'], self::NO_ERR, $extension, $js_data);
       }
     };
+
+    return;
   }
 
 
   /**
    * jsonファイルのパスから、デコードしたデータを返す
-   * @param $file_path
-   * ファイルのパス
-   * @return $decoded_list_data
-   * デコードされたjsonデータ
+   * @param string $file_path ファイルのパス
+   * @return array $decoded_list_data デコードされたjsonデータ
    */
-  private function get_json_list($file_path)
+  private function getJsonList($file_path)
   {
     $list_data = file_get_contents($file_path);
     $decoded_list_data = json_decode($list_data, true);
     return $decoded_list_data;
   }
-
-  // yyyymmdd-err-fg
-  private function create_err_file($dirName, $err_status)
-  {
-    $err_file_name = $this->create_file_name($err_status);
-  }
-
-  private function create_file_name($err_status)
-  {
-    $txt = "";
-    $d = new DateTime();
-    var_dump($d->format('Ymd'));
-
-    if ($err_status !== "") {
-
-      if ($err_status === 1) {
-        $txt = "flag";
-      }
-      if ($err_status === 2) {
-        $txt = "nopage";
-      }
-      if ($err_status === 3) {
-        $txt = "nocss";
-      }
-      if ($err_status === 4) {
-        $txt = "nojs";
-      }
-
-      $filename = `{$d->format('Ymd')}-err-{$txt}.txt`;
-    } else {
-      $filename = `{$d->format('Ymd')}{$txt}`;
-    }
-  }
 }
+
 
 $system = new ScrollWebPageSystem();
 $system->main();

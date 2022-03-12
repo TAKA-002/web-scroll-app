@@ -1,9 +1,9 @@
 <?php
 
-class ExistsValidation
+class ExistValidation
 {
 
-  public function url_exists($url)
+  public function urlExists($url)
   {
     if (!$url && !is_string($url)) {
       return false;
