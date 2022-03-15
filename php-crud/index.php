@@ -24,15 +24,14 @@ include './partials/header.php'
       <a href="./actions/create.php" class="btn btn-success">Create New Item</a>
     </p>
 
-    <table class="table">
+    <table class="table table-hover">
       <thead>
         <tr>
           <th>ID</th>
-          <th>Site</th>
+          <th>SITE</th>
           <th>URL / CSS / JS</th>
-          <th>DirName</th>
-          <th>Flag</th>
-          <th>Actions</th>
+          <th>FLAG</th>
+          <th>ACTIONS</th>
         </tr>
       </thead>
       <tbody>
@@ -57,8 +56,14 @@ include './partials/header.php'
                 </li>
               </ul>
             </td>
-            <td><?php echo $item['dirName'] ?></td>
-            <td><?php echo $item['scrollFlag'] ? 'true' : 'false'; ?></td>
+            <td>
+              <!-- scroll状態によって色分け -->
+              <?php if ($item['scrollFlag']) : ?>
+                <span class="fw-bolder text-primary"><?php echo "実行中"; ?></span>
+              <?php else : ?>
+                <span class="fw-bolder text-danger"><?php echo "停止中"; ?></span>
+              <?php endif ?>
+            </td>
             <td class="btn__wrap">
               <a href="./actions/view.php?id=<?php echo $item['id'] ?>" class="btn btn-sm btn-outline-info">View</a>
               <a href="./actions/update.php?id=<?php echo $item['id'] ?>" class="btn btn-sm btn-outline-success">Update</a>

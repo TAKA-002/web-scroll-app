@@ -31,6 +31,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   $validation = new Validation();
 
+  // echo '<pre>';
+  // var_dump($_POST);
+  // echo '</pre>';
+
   /**
    * postデータが空ではないかチェック。
    */

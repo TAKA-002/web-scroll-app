@@ -42,7 +42,7 @@ if (!$web_page_data) {
         </form>
       </div>
 
-      <table class="table">
+      <table class="table table-hover">
 
         <tbody>
           <tr>
@@ -50,7 +50,7 @@ if (!$web_page_data) {
             <td><?php echo $web_page_data['id'] ?></td>
           </tr>
           <tr>
-            <th>CompanyName</th>
+            <th>SITE</th>
             <td><?php echo $web_page_data['companyName'] ?></td>
           </tr>
           <tr>
@@ -70,12 +70,22 @@ if (!$web_page_data) {
             </td>
           </tr>
           <tr>
-            <th>DirName</th>
-            <td><?php echo $web_page_data['dirName'] ?></td>
+            <th>DIRECTORY：データ格納場所</th>
+            <td>/web-scroll-app/output/<span class="fw-bolder text-primary"><?php echo $web_page_data['id'] . "_" . $web_page_data['dirName'] ?></span></td>
           </tr>
           <tr>
-            <th>ScrollFlag</th>
-            <td><?php echo $web_page_data['scrollFlag'] ? 'true' : 'false' ?></td>
+            <th>SCROLL FLAG</th>
+            <td>
+              <!-- scrollFlagがtrueで青。falseで赤 -->
+              <?php if ($web_page_data['scrollFlag']) : ?>
+                <span class="fw-bolder text-primary"><?php echo "スクロール実行中"; ?></span>
+
+              <?php else : ?>
+                <span class="fw-bolder text-danger"><?php echo "スクロール停止中"; ?></span>
+
+              <?php endif ?>
+
+            </td>
           </tr>
         </tbody>
       </table>

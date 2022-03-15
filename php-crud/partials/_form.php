@@ -15,7 +15,7 @@
     <div class="card-body">
       <form action="" method="POST" enctype="multipart/form-data">
 
-        <div class="form-group mb-3">
+        <div class="form-group mb-5">
 
           <!-- 新規（企業名がない場合）はID：自動入力 -->
           <?php if ($web_page_data['companyName'] === '') : ?>
@@ -30,34 +30,66 @@
           <input name="id" value="<?php echo $web_page_data['id']; ?>" class="form-control" readonly>
         </div>
 
-        <div class="form-group mb-3">
-          <label class="form-label">SiteName</label>
+        <div class="form-group mb-5">
+          <label class="form-label">SITE（日本語可）</label>
           <input name="companyName" value="<?php echo $web_page_data['companyName']; ?>" class="form-control">
         </div>
 
-        <div class="form-group mb-3">
+        <div class="form-group mb-5">
           <label class="form-label">PAGE URL</label>
           <input name="url" value="<?php echo $web_page_data['url']; ?>" class="form-control">
         </div>
 
-        <div class="form-group mb-3">
+        <div class="form-group mb-5">
           <label class="form-label">CSS URL</label>
           <input name="css" value="<?php echo $web_page_data['css']; ?>" class="form-control">
         </div>
 
-        <div class="form-group mb-3">
+        <div class="form-group mb-5">
           <label class="form-label">JS URL</label>
           <input name="js" value="<?php echo $web_page_data['js']; ?>" class="form-control">
         </div>
 
-        <div class="form-group mb-3">
-          <label class="form-label">DirName：すべて半角英数字（データ格納フォルダ名）</label>
-          <input name="dirName" value="<?php echo $web_page_data['dirName'] ?>" class="form-control">
+        <div class="form-group mb-5">
+          <?php if ($web_page_data['companyName'] === "") : ?>
+            <label class="form-label">DIRECTORY：すべて半角英数字（推奨：サイト名と同じ　　例：NHK選挙WEB => nhksenkyo）</label>
+            <input name="dirName" value="<?php echo $web_page_data['dirName'] ?>" class="form-control">
+
+          <?php else : ?>
+            <label class="form-label">DIRECTORY</label>
+            <input type="hidden" name="dirName" value="<?php echo $web_page_data['dirName'] ?>" class="form-control">
+            <p>/web-scroll-app/output/<span class="fw-bolder text-primary"><?php echo $web_page_data['id'] . "_" . $web_page_data['dirName'] ?></span></p>
+
+          <?php endif ?>
         </div>
 
-        <div class="form-group mb-3">
-          <label class="form-label">ScrollFlag：true or false（trueはスクロール実施。falseはスクロール不要）</label>
-          <input name="scrollFlag" value="<?php echo $web_page_data['scrollFlag'] ? "true" : "false"; ?>" class="form-control">
+        <div class="form-group mb-5">
+          <label class="form-label">SCROLL FLAG：スクロール切替</label>
+
+          <!-- scrollFlagがtrueで青。falseで赤 -->
+          <?php if ($web_page_data['scrollFlag']) : ?>
+            <p>現在：<span class="fw-bolder text-primary"><?php echo "スクロール実行中"; ?></span></p>
+
+          <?php else : ?>
+            <p>現在：<span class="fw-bolder text-danger"><?php echo "スクロール停止中"; ?></span></p>
+
+          <?php endif ?>
+
+
+          <select name="scrollFlag" class="form-control">
+
+            <!-- scrollFlagがtrueかflaseで初期値を変更 -->
+            <?php if ($web_page_data['scrollFlag'] === true) : ?>
+              <option value="true" selected>スクロール実行</option>
+              <option value="false">スクロール停止</option>
+
+            <?php else : ?>
+              <option value="true">スクロール実行</option>
+              <option value="false" selected>スクロール停止</option>
+
+            <?php endif ?>
+          </select>
+
         </div>
 
         <button class="btn btn-success">Submit</button>
