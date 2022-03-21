@@ -1,4 +1,4 @@
-![scrollapp-view](https://media.gh-news.nhk.or.jp/user/7/files/3d490a80-a39e-11ec-9217-624b9d161f3d)  
+![scroll-app-top](https://user-images.githubusercontent.com/66257816/159259364-162aa12e-1d1e-43db-8894-4b1d52d1dcc6.png)
 
 # WEB SCROLL APP
 このウェブアプリは、ターゲットとなるWEBページのCSSファイルとJSファイルをローカルにダウンロードし、データとして蓄積させていくことを目的としてます。  
@@ -16,7 +16,7 @@ CRUDのGUIページのスタイルはほぼすべてBootstrapにて作成
 
 
 ## TREE
-![tree_1](https://media.gh-news.nhk.or.jp/user/7/files/3eb03980-a53c-11ec-9780-9b5f8392dffa)  
+![tree-v3](https://user-images.githubusercontent.com/66257816/159260267-f2386bc6-c5e8-4770-bfaa-a0afee9cf1fb.png)  
 ※Bootstrapフォルダは除外  
 
 
@@ -80,11 +80,8 @@ crontabに以下を記載。
 - MAMP設定  
 1. MAMPのapacheを自動起動に設定する  
 Preferences... > General > Start servers ： チェックを入れる > OK  
-![mamp__1](https://media.gh-news.nhk.or.jp/user/7/files/87afc000-a533-11ec-8f9d-e84e40514204)  
-![mamp__2](https://media.gh-news.nhk.or.jp/user/7/files/972f0900-a533-11ec-8c42-2526b160e75b)  
 2. PC起動と同時にMAMPを起動する設定を実施  
 システム環境設定 > ユーザーとグループ > ログイン項目 > 鍵マークでログインパスワード入力 > 「+」ボタン　> アプリケーションの中の「MAMP.app」を選択 > 非表示ボタンにチェック > 鍵をロック  
-![mamp03](https://media.gh-news.nhk.or.jp/user/7/files/eaa25680-a535-11ec-82cc-03907316c813)  
 
 - CRON設定  
 1. ターミナル起動  
@@ -97,7 +94,6 @@ Preferences... > General > Start servers ： チェックを入れる > OK
 ```5 7 * * 1 php /Applications/MAMP/htdocs/web-scroll-app/php-scroll/index.php```  
 6. git commit 実行設定（例：毎週月曜日AM7:10）  
 ```10 7 * * 1 sh /Applications/MAMP/htdocs/web-scroll-app/auto-commit.sh```  
-![cron__1](https://media.gh-news.nhk.or.jp/user/7/files/3b1bb300-a53a-11ec-9a84-920137226c59)  
 7. 「ESC」キーで「-- INSERT --」モードを終了
 8. 「:wq」を入力して、保存して終了
 
